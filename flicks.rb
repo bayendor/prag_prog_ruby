@@ -1,4 +1,4 @@
-# Lesson 8 - Attributes
+# Lesson 9 - Arrays
 class Movie
   attr_accessor :title
   attr_reader :rank
@@ -21,24 +21,18 @@ class Movie
   end
 
   def to_s
-    "#{@title} has a rank of #{normalized_rank}"
+    "#{@title} has a rank of #{rank}"
   end
 end
 
-movie1 = Movie.new('goonies', 100)
-movie1.thumbs_up
-puts movie1
-
+movie1 = Movie.new('goonies', 10)
 movie2 = Movie.new('ghostbusters', 9)
-movie2.thumbs_down
-puts movie2
-
 movie3 = Movie.new('goldfinger')
-puts movie3
 
-puts movie1.title
-puts movie1.rank
+movies = [movie1, movie2, movie3]
 
-movie1.title = 'Goonies 2.0'
-puts movie1.title
-puts movie1.normalized_rank
+movies.each do |movie|
+  movie.thumbs_up
+  puts movie
+end
+

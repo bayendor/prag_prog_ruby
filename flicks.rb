@@ -1,8 +1,15 @@
-# 8/1/14
+# Lesson 8 - Attributes
 class Movie
+  attr_accessor :title
+  attr_reader :rank
+
   def initialize(title, rank = 0)
     @title = title.capitalize
     @rank = rank
+  end
+
+  def normalized_rank
+    @rank / 10
   end
 
   def thumbs_up
@@ -14,11 +21,11 @@ class Movie
   end
 
   def to_s
-    "#{@title} has a rank of #{@rank}"
+    "#{@title} has a rank of #{normalized_rank}"
   end
 end
 
-movie1 = Movie.new('goonies', 10)
+movie1 = Movie.new('goonies', 100)
 movie1.thumbs_up
 puts movie1
 
@@ -28,3 +35,10 @@ puts movie2
 
 movie3 = Movie.new('goldfinger')
 puts movie3
+
+puts movie1.title
+puts movie1.rank
+
+movie1.title = 'Goonies 2.0'
+puts movie1.title
+puts movie1.normalized_rank

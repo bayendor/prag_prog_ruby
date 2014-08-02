@@ -1,4 +1,4 @@
-prag_prog_ruby
-==============
+Pragmatic Study -- Ruby Programming
+===================================
 
-This is the prep course for Turing.io
+This is a Ruby prep course provided Turing.io

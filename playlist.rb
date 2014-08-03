@@ -27,7 +27,6 @@ class Playlist
       when 3..4
         puts "#{movie.title} was skipped."
       else
-        movie
         movie.thumbs_up
         puts "#{movie.title} got a thumbs up!"
       end

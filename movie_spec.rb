@@ -16,7 +16,7 @@ describe Movie do
   end
 
   it "has a string representation" do
-    expect(@movie.to_s).to eq "Goonies has a rank of 10"
+    expect(@movie.to_s).to eq "Goonies has a rank of 10 (Hit)"
   end
 
   it "increases rank by 1 with thumbs up" do
@@ -36,6 +36,33 @@ describe Movie do
 
     it "has a rank of 0" do
       expect(@movie.rank).to eq 0
+    end
+  end
+
+  context "with a rank of at least 10" do
+    before do
+      @movie = Movie.new("goonies", 10)
+    end
+
+    it "is a hit" do
+      expect(@movie).to be_hit
+    end
+
+    it "has a hit status" do
+      expect(@movie.status).to include("Hit")
+    end
+  end
+
+  context "with a rank of less than 10" do
+    before do
+      @movie = Movie.new("goonies", 9)
+    end
+    it "is not a hit" do
+      expect(@movie).to_not be_hit
+    end
+
+    it "has a flop status" do
+      expect(@movie.status).to include("Flop")
     end
   end
 end

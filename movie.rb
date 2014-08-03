@@ -28,7 +28,7 @@ class Movie
   end
 
   def status
-    hit? ? "Hit" : "Flop"
+    hit? ? 'Hit' : 'Flop'
   end
 end
 

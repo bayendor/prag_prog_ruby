@@ -1,6 +1,5 @@
 # Bonus Project - Crowdfunding
 class Project
-
   attr_reader :target_funding_amount, :funding
   attr_accessor :name
 
@@ -24,9 +23,7 @@ class Project
     puts "#{@name} got more funds!"
   end
 
-  def name=(new_name)
-    @name = new_name
-  end
+  attr_writer :name
 
   def funding_needed
     @target - @funding
@@ -58,5 +55,3 @@ puts project1.funding_needed
 puts project2
 puts project3
 puts project4
-
-

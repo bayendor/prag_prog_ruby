@@ -35,8 +35,8 @@ class Player
   end
 end
 
-if __FILE__ ==$0
-  player = Player.new("moe")
+if __FILE__ == $0
+  player = Player.new('moe')
   puts player.name
   puts player.health
   player.w00t

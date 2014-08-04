@@ -30,6 +30,10 @@ class Movie
   def status
     hit? ? 'Hit' : 'Flop'
   end
+
+  def <=>(other_movie)
+    other_movie.rank <=> @rank
+  end
 end
 
 if __FILE__ == $0

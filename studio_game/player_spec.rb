@@ -19,7 +19,7 @@ describe Player do
   end
 
   it 'has a string representation' do
-    expect(@player.to_s).to include("Larry", "health of 100","score of 105.")
+    expect(@player.to_s).to include('Larry', 'health of 100', 'score of 105.')
   end
 
   it 'computes a score as the sum of its health and length of name' do
@@ -43,6 +43,20 @@ describe Player do
 
     it 'has a health of 100' do
       expect(@player.health).to eq @initial_health
+    end
+
+    it 'is not strong' do
+      expect(@player).not_to be_strong
+    end
+  end
+
+  context 'with a health greater than 100' do
+    before do
+      @player = Player.new('larry', 150)
+    end
+
+    it 'is strong' do
+      expect(@player).to be_strong
     end
   end
 end

@@ -13,16 +13,35 @@ class Game
     @players.push(player)
   end
 
-  def play
+  def play(rounds)
     puts "There are #{@players.size} players in #{@title}."
 
     @players.each do |player|
       puts player
     end
 
-    @players.each do |player|
-      GameTurn.take_turn(player)
-      puts player
+    1.upto(rounds) do |round|
+      puts "\nRound #{round}:"
+      @players.each do |player|
+        GameTurn.take_turn(player)
+        puts player
+      end
+    end
+  end
+
+  def print_stats
+    puts "\n#{@title} Statistics:"
+
+    strong_play, wimpy_play = @players.partition { |player| player.strong? }
+
+    puts "\n#{strong_play.size} strong players:"
+    strong_play.each do |player|
+      puts "#{player.name} (#{player.health})"
+    end
+
+    puts "\n#{wimpy_play.size} wimpy players:"
+    wimpy_play.each do |player|
+      puts "#{player.name} (#{player.health})"
     end
   end
 end

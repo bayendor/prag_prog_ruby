@@ -33,6 +33,14 @@ class Game
     puts "#{player.name} (#{player.health})"
   end
 
+  def print_high_scores
+    puts "\n#{@title} High Scores:"
+    @players.sort.each do |player|
+      formatted_name = player.name.ljust(20, '.')
+      puts "#{formatted_name}#{player.score}"
+    end
+  end
+
   def print_stats
     puts "\n#{@title} Statistics:"
 
@@ -48,11 +56,7 @@ class Game
       print_name_and_health(player)
     end
 
-    puts "\n#{@title} High Scores:"
-    @players.sort.each do |player|
-      formatted_name = player.name.ljust(20,'.')
-      puts "#{formatted_name}#{player.score}"
-    end
+    print_high_scores
   end
 end
 
@@ -61,5 +65,4 @@ if __FILE__ == $0
   singleton = Game.new('Singleton')
   singleton.add_player(player1)
   singleton.play(1)
-  singleton.print_name_and_health(player1)
 end

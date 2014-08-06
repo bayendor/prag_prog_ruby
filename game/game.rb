@@ -29,6 +29,10 @@ class Game
     end
   end
 
+  def print_name_and_health(player)
+    puts "#{player.name} (#{player.health})"
+  end
+
   def print_stats
     puts "\n#{@title} Statistics:"
 
@@ -36,12 +40,18 @@ class Game
 
     puts "\n#{strong_play.size} strong players:"
     strong_play.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
     end
 
     puts "\n#{wimpy_play.size} wimpy players:"
     wimpy_play.each do |player|
-      puts "#{player.name} (#{player.health})"
+      print_name_and_health(player)
+    end
+
+    puts "\n#{@title} High Scores:"
+    @players.sort.each do |player|
+      formatted_name = player.name.ljust(20,'.')
+      puts "#{formatted_name}#{player.score}"
     end
   end
 end
@@ -50,5 +60,6 @@ if __FILE__ == $0
   player1 = Player.new('moe')
   singleton = Game.new('Singleton')
   singleton.add_player(player1)
-  singleton.play
+  singleton.play(1)
+  singleton.print_name_and_health(player1)
 end

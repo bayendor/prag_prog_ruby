@@ -22,7 +22,7 @@ class Game
     end
 
     treasures = TreasureTrove::TREASURES
-    puts  "\nThere are #{treasures.size} treasures to be found:"
+    puts "\nThere are #{treasures.size} treasures to be found:"
 
     treasures.each do |treasure|
       puts "A #{treasure.name} is worth #{treasure.points} points"
@@ -48,6 +48,10 @@ class Game
     end
   end
 
+  def total_points
+    @players.reduce(0) { |sum, player| sum + player.points }
+  end
+
   def print_stats
     puts "\n#{@title} Statistics:"
 
@@ -63,7 +67,13 @@ class Game
       print_name_and_health(player)
     end
 
+    @players.each do |player|
+      puts "\n#{player.name}'s point totals:"
+      puts "#{player.points} grand total points"
+    end
     print_high_scores
+
+    print "\n#{total_points} total points from treasures found"
   end
 end
 

@@ -1,4 +1,5 @@
 require_relative 'player'
+require_relative 'treasure_trove'
 
 describe Player do
 
@@ -17,12 +18,30 @@ describe Player do
     expect(@player.health).to eq @initial_health
   end
 
-  it 'has a string representation' do
-    expect(@player.to_s).to include('Larry', 'health of 100', 'score of 105.')
+  it 'computes points as the sum of all treaure points' do
+    expect(@player.points).to eq(0)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(50)
+
+    @player.found_treasure(Treasure.new(:crowbar, 400))
+
+    expect(@player.points).to eq(450)
+
+    @player.found_treasure(Treasure.new(:hammer, 50))
+
+    expect(@player.points).to eq(500)
   end
 
-  it 'computes a score as the sum of its health and length of name' do
-    expect(@player.score).to eq(@initial_health + @initial_score)
+  it 'computes a score as the sum of its health and points' do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    expect(@player.score).to eq(150)
+  end
+
+  it 'has a string representation' do
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    expect(@player.to_s).to include('Larry', 'health of 100', 'score of 150.')
   end
 
   it 'increases health by 15 when w00ted' do

@@ -15,21 +15,21 @@ describe Playlist do
 
     it "gives the movie a thumbs up if a high number is rolled" do
       allow(WaldorfAndStatler).to receive_messages(:roll_die => 5)
-      @playlist.play
+      @playlist.play(1)
 
       expect(@movie.rank).to eq(@initial_rank + 1)
     end
 
     it "skips the movie if a medium number is rolled" do
       allow(WaldorfAndStatler).to receive_messages(:roll_die => 3)
-      @playlist.play
+      @playlist.play(1)
 
       expect(@movie.rank).to eq(@initial_rank)
     end
 
     it "gives a movie a thumbs down if a low number is rolled" do
       allow(WaldorfAndStatler).to receive_messages(:roll_die => 1)
-      @playlist.play
+      @playlist.play(1)
 
       expect(@movie.rank).to eq(@initial_rank - 1)
     end

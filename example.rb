@@ -1,9 +1,18 @@
-require_relative './flicks/movie'
+# Fun with hashes and reduce!
 
-movie1 = Movie.new('goonies', 10)
-movie2 = Movie.new('godfather', 3)
-movie3 = Movie.new('goldfinger', 7)
+letters = { 'c' => 3, 'e' => 1, 'l' => 1, 'n' => 1, 't' => 1, 'x' => 8,
+            'y' => 4 }
 
-movies = [movie1, movie2, movie3]
+word = 'excellently'
+point_totals = Hash.new(0)
+score = 0
 
-puts movies.sort
+word.each_char { |char| score += letters[char] }
+
+puts score
+
+word.each_char { |c| point_totals[c] += letters[c] }
+
+puts point_totals
+
+puts "#{point_totals.values.reduce(0, :+)}"

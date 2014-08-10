@@ -17,6 +17,13 @@ class Movie
     puts "#{@title} led to #{snack.carbs} #{snack.name} carbs being consumed."
   end
 
+  def each_snack
+    @snack_carbs.each do |name, carbs|
+      snack = Snack.new(name, carbs)
+      yield snack
+    end
+  end
+
   def normalized_rank
     @rank / 10
   end

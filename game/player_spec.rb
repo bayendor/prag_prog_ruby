@@ -39,6 +39,26 @@ describe Player do
     expect(@player.score).to eq(150)
   end
 
+  it 'yields each treasure and its total points' do
+    @player.found_treasure(Treasure.new(:skillet, 100))
+    @player.found_treasure(Treasure.new(:skillet, 100))
+    @player.found_treasure(Treasure.new(:hammer, 50))
+    @player.found_treasure(Treasure.new(:bottle, 5))
+    @player.found_treasure(Treasure.new(:bottle, 5))
+    @player.found_treasure(Treasure.new(:bottle, 5))
+
+    yielded = []
+    @player.each_found_treasure do |treasure|
+      yielded << treasure
+    end
+
+    expect(yielded).to eq [
+      Treasure.new(:skillet, 200),
+      Treasure.new(:hammer, 50),
+      Treasure.new(:bottle, 15)
+    ]
+  end
+
   it 'has a string representation' do
     @player.found_treasure(Treasure.new(:hammer, 50))
     expect(@player.to_s).to include('Larry', 'health of 100', 'score of 150.')

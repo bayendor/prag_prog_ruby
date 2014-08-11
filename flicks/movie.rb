@@ -40,6 +40,15 @@ class Movie
     "#{@title} has a rank of #{rank} (#{status})"
   end
 
+  def to_csv
+    "#{@title}, #{@rank}"
+  end
+
+  def self.from_csv(line)
+    title, rank = line.split(',')
+    Movie.new(title, Integer(rank))
+  end
+
   def hit?
     @rank >= 10
   end

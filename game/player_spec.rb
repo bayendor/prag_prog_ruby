@@ -64,6 +64,13 @@ describe Player do
     expect(@player.to_s).to include('Larry', 'health of 100', 'score of 150.')
   end
 
+  it 'can be created from a CSV string' do
+    player = Player.from_csv('larry,150')
+
+    expect(player.name).to eq('Larry')
+    expect(player.health).to eq(150)
+  end
+
   it 'increases health by 15 when w00ted' do
     @player.w00t
     expect(@player.health).to eq(@initial_health + 15)

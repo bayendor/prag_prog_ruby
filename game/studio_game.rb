@@ -10,8 +10,17 @@ knuckleheads.add_player(player1)
 knuckleheads.add_player(player2)
 knuckleheads.add_player(player3)
 
-knuckleheads.play(10) do
-  knuckleheads.total_points >= 2000
+loop do
+  puts "How many game rounds? ('quit' to exit)"
+  rounds = gets.chomp.downcase
+  case rounds
+  when /^\d+$/
+    puts "Enjoy your #{rounds} rounds..."
+    knuckleheads.play(rounds.to_i)
+  when 'quit', 'exit'
+    knuckleheads.print_stats
+    break
+  else
+    puts "Please enter a number or 'quit'"
+  end
 end
-
-knuckleheads.print_stats

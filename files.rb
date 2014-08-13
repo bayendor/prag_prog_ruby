@@ -12,7 +12,7 @@ File.readlines('movies.csv').each do |line|
   puts movie
 end
 
-File.open("movie_rankings.csv", 'w') do |file|
+File.open('movie_rankings.csv', 'w') do |file|
   movies.sort.each do |movie|
     file.puts "#{movie.title}, #{movie.rank}"
   end

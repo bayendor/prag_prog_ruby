@@ -14,7 +14,7 @@ class Playlist
     end
   end
 
-  def save(to_file='movie_rankings.csv')
+  def save(to_file = 'movie_rankings.csv')
     File.open(to_file, 'w') do |file|
       @movies.sort.each do |movie|
         file.puts movie.to_csv
@@ -31,7 +31,7 @@ class Playlist
     puts @movies.sort
 
     snacks = SnackBar::SNACKS
-    puts  "\nThere are #{snacks.size} snacks available in the snackbar"
+    puts "\nThere are #{snacks.size} snacks available in the snackbar"
 
     snacks.each do |snack|
       puts "#{snack.name} has #{snack.carbs} carbs"

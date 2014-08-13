@@ -1,8 +1,7 @@
 Snack = Struct.new(:name, :carbs)
 
 module SnackBar
-
-  SNACKS= [
+  SNACKS = [
     Snack.new(:popcorn, 20),
     Snack.new(:candy, 15),
     Snack.new(:nachos, 40),

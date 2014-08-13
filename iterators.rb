@@ -23,14 +23,13 @@ puts my_select(numbers) { |n| n.even? }
 
 def conversation
   if block_given?
-    puts "Hello"
+    puts 'Hello'
     puts yield
-    puts "Goodbye"
+    puts 'Goodbye'
   else
-    puts "Nothing to say?"
+    puts 'Nothing to say?'
   end
 end
 
-conversation { "Good to meet you!" }
+conversation { 'Good to meet you!' }
 conversation
-

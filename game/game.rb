@@ -1,9 +1,12 @@
 require_relative 'player'
 require_relative 'game_turn'
 require_relative 'treasure_trove'
+require_relative 'playable'
 require 'csv'
 
 class Game
+  include Playable
+
   attr_reader :title
 
   def initialize(title)

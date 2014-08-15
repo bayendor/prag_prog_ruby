@@ -1,6 +1,9 @@
+require_relative 'rankable'
+
 class Movie
-  attr_accessor :title
-  attr_reader :rank
+  include Rankable
+
+  attr_accessor :title, :rank
 
   def initialize(title, rank = 0)
     @title = title.capitalize
@@ -24,18 +27,6 @@ class Movie
     end
   end
 
-  def normalized_rank
-    @rank / 10
-  end
-
-  def thumbs_up
-    @rank += 1
-  end
-
-  def thumbs_down
-    @rank -= 1
-  end
-
   def to_s
     "#{@title} has a rank of #{rank} (#{status})"
   end
@@ -47,18 +38,6 @@ class Movie
   def self.from_csv(line)
     title, rank = line.split(',')
     Movie.new(title, Integer(rank))
-  end
-
-  def hit?
-    @rank >= 10
-  end
-
-  def status
-    hit? ? 'Hit' : 'Flop'
-  end
-
-  def <=>(other_movie)
-    other_movie.rank <=> @rank
   end
 end
 

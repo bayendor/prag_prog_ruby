@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.files         = Dir['{bin,lib,spec}/**/*'] + %w( LICENSE README )
   s.test_files    = Dir['spec/**/*']
-  s.executables   = [ 'flicks' ]
+  s.executables   = ['flicks']
 
   s.required_ruby_version = '>=2.1.0'
   s.add_development_dependency 'rspec'

@@ -5,8 +5,8 @@ module Flicks
     end
 
     def self.review(movie)
-      number_rolled = roll_die
-      case number_rolled
+      # number_rolled = roll_die
+      case roll_die
       when 1..2
         movie.thumbs_down
         puts "#{movie.title} got a thumbs down!"
